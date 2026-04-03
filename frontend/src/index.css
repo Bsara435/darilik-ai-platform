@@ -1,0 +1,70 @@
+:root {
+  /* Casablanca proptech — slate, teal, cobalt (no brown) */
+  --color-ink: #0f172a;
+  --color-slate: #334155;
+  --color-muted: #64748b;
+  --color-surface: #f4f8fc;
+  --color-surface-alt: #eef6ff;
+  --color-accent: #0f766e;
+  --color-accent-light: #14b8a6;
+  --color-accent-hover: #115e59;
+  --color-brand-blue: #2563eb;
+  --color-brand-blue-deep: #1d4ed8;
+  --color-on-accent: #ffffff;
+  --color-glass: rgba(255, 255, 255, 0.78);
+  --color-border-subtle: rgba(15, 23, 42, 0.07);
+
+  --font-heading: 'DM Sans', system-ui, 'Segoe UI', sans-serif;
+  --font-body: 'Source Sans 3', system-ui, 'Segoe UI', sans-serif;
+
+  color-scheme: light;
+  font-family: var(--font-body);
+  font-size: 17px;
+  line-height: 1.5;
+  color: var(--color-ink);
+  background: var(--color-surface);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  min-height: 100%;
+  background: var(--color-surface);
+}
+
+body {
+  margin: 0;
+  min-height: 100svh;
+  position: relative;
+}
+
+#root {
+  min-height: 100svh;
+  width: 100%;
+  margin: 0;
+  text-align: left;
+  border: none;
+  display: block;
+  position: relative;
+  isolation: isolate;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}

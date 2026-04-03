@@ -1,0 +1,147 @@
+/* Animated ambient background — sits behind all content */
+
+.ambient-bg {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.ambient-bg__base {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    165deg,
+    #e8f4f3 0%,
+    #f0f7ff 28%,
+    #f8fafc 52%,
+    #eef2ff 78%,
+    #f4f8fc 100%
+  );
+  background-size: 200% 200%;
+  animation: baseShift 28s ease-in-out infinite alternate;
+}
+
+.ambient-bg__blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(72px);
+  will-change: transform, opacity;
+  animation: blobFloat 24s ease-in-out infinite;
+}
+
+.ambient-bg__blob--1 {
+  width: min(85vw, 640px);
+  height: min(85vw, 640px);
+  top: -18%;
+  left: -12%;
+  background: radial-gradient(
+    circle at 35% 35%,
+    rgba(45, 212, 191, 0.45) 0%,
+    rgba(20, 184, 166, 0.2) 42%,
+    transparent 68%
+  );
+  animation-delay: 0s;
+  animation-duration: 26s;
+}
+
+.ambient-bg__blob--2 {
+  width: min(75vw, 520px);
+  height: min(75vw, 520px);
+  top: 35%;
+  right: -15%;
+  background: radial-gradient(
+    circle at 50% 50%,
+    rgba(59, 130, 246, 0.38) 0%,
+    rgba(37, 99, 235, 0.15) 45%,
+    transparent 70%
+  );
+  animation-delay: -8s;
+  animation-duration: 22s;
+}
+
+.ambient-bg__blob--3 {
+  width: min(90vw, 700px);
+  height: min(90vw, 700px);
+  bottom: -25%;
+  left: 15%;
+  background: radial-gradient(
+    circle at 40% 60%,
+    rgba(99, 102, 241, 0.22) 0%,
+    rgba(15, 118, 110, 0.18) 50%,
+    transparent 65%
+  );
+  animation-delay: -14s;
+  animation-duration: 30s;
+}
+
+.ambient-bg__grid {
+  position: absolute;
+  inset: 0;
+  opacity: 0.45;
+  background-image:
+    linear-gradient(rgba(15, 23, 42, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(15, 23, 42, 0.035) 1px, transparent 1px);
+  background-size: 48px 48px;
+  mask-image: radial-gradient(ellipse 85% 75% at 50% 40%, black 20%, transparent 72%);
+  animation: gridDrift 40s linear infinite;
+}
+
+@keyframes baseShift {
+  0% {
+    background-position: 0% 40%;
+  }
+  50% {
+    background-position: 100% 60%;
+  }
+  100% {
+    background-position: 0% 40%;
+  }
+}
+
+@keyframes blobFloat {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+    opacity: 0.85;
+  }
+  25% {
+    transform: translate(4%, -3%) scale(1.04);
+    opacity: 0.95;
+  }
+  50% {
+    transform: translate(-3%, 5%) scale(0.97);
+    opacity: 0.88;
+  }
+  75% {
+    transform: translate(5%, 2%) scale(1.02);
+    opacity: 0.92;
+  }
+}
+
+@keyframes gridDrift {
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(48px, 48px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ambient-bg__base,
+  .ambient-bg__blob,
+  .ambient-bg__grid {
+    animation: none;
+  }
+
+  .ambient-bg__base {
+    background: linear-gradient(165deg, #e8f4f3 0%, #f0f7ff 40%, #f8fafc 100%);
+    background-size: 100% 100%;
+  }
+}
+
+main {
+  width: 100%;
+}
