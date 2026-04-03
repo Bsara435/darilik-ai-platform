@@ -132,7 +132,7 @@ button.primaryBtn {
   height: min(58svh, 520px);
 }
 
-.heroImageFrame {
+.heroCanvasFrame {
   position: relative;
   width: 100%;
   height: 100%;
@@ -144,15 +144,49 @@ button.primaryBtn {
     0 24px 48px rgba(15, 23, 42, 0.12),
     0 4px 12px rgba(15, 23, 42, 0.06);
   border: 1px solid rgba(255, 255, 255, 0.85);
+  background: linear-gradient(
+    155deg,
+    rgba(240, 253, 250, 0.95) 0%,
+    rgba(224, 242, 254, 0.75) 45%,
+    rgba(241, 245, 249, 0.9) 100%
+  );
 }
 
-.heroImage {
+.heroCanvasWrap {
   width: 100%;
   height: 100%;
   min-height: 380px;
-  object-fit: cover;
-  object-position: center;
+  touch-action: none;
+}
+
+.heroCanvasWrap canvas {
   display: block;
+  width: 100% !important;
+  height: 100% !important;
+}
+
+.heroCanvasFallback {
+  width: 100%;
+  min-height: 380px;
+  height: 100%;
+  border-radius: 28px;
+  background: linear-gradient(
+    90deg,
+    rgba(15, 23, 42, 0.04) 0%,
+    rgba(15, 23, 42, 0.08) 50%,
+    rgba(15, 23, 42, 0.04) 100%
+  );
+  background-size: 200% 100%;
+  animation: heroShimmer 1.1s ease-in-out infinite;
+}
+
+@keyframes heroShimmer {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
 }
 
 @media (max-width: 900px) {
@@ -183,11 +217,15 @@ button.primaryBtn {
     max-height: 420px;
   }
 
-  .heroImageFrame {
+  .heroCanvasFrame {
     min-height: 320px;
   }
 
-  .heroImage {
+  .heroCanvasWrap {
+    min-height: 320px;
+  }
+
+  .heroCanvasFallback {
     min-height: 320px;
   }
 }

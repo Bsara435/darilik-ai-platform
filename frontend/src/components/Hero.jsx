@@ -1,6 +1,7 @@
+import { lazy, Suspense } from 'react'
 import styles from './Hero.module.css'
 
-const heroImg = `${import.meta.env.BASE_URL}properties/prop-1.png`
+const HeroScene3D = lazy(() => import('./HeroScene3D'))
 
 export default function Hero({ onGetStarted }) {
   return (
@@ -28,16 +29,13 @@ export default function Hero({ onGetStarted }) {
         </div>
       </div>
       <div className={styles.heroVisual}>
-        <div className={styles.heroImageFrame}>
-          <img
-            src={heroImg}
-            alt=""
-            className={styles.heroImage}
-            width={800}
-            height={600}
-            loading="eager"
-            decoding="async"
-          />
+        <div
+          className={styles.heroCanvasFrame}
+          aria-label="Interactive 3D illustration — drag to rotate"
+        >
+          <Suspense fallback={<div className={styles.heroCanvasFallback} aria-hidden />}>
+            <HeroScene3D />
+          </Suspense>
         </div>
       </div>
     </section>
