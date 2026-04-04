@@ -35,6 +35,14 @@ export default function DashboardLayout({ onLogout }) {
           >
             Profile matching
           </NavLink>
+          <NavLink
+            to="/legal-advisor"
+            className={({ isActive }) =>
+              isActive ? `${styles.navLink} ${styles.navActive}` : styles.navLink
+            }
+          >
+            Legal Advisor
+          </NavLink>
           <a className={styles.navLink} href="#settings">
             Settings
           </a>

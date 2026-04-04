@@ -124,6 +124,49 @@
   min-height: 420px;
 }
 
+.dualWork {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(280px, 0.85fr);
+  gap: 1.25rem;
+  align-items: start;
+}
+
+.decisionColumn {
+  min-width: 0;
+}
+
+.schedulerColumn {
+  min-width: 0;
+  position: sticky;
+  top: 1rem;
+  align-self: start;
+  padding: 0.85rem 1rem 1rem;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.72);
+  border: 1px solid rgba(15, 23, 42, 0.07);
+  box-shadow: 0 2px 12px rgba(15, 23, 42, 0.04);
+}
+
+@media (max-width: 1100px) {
+  .dualWork {
+    grid-template-columns: 1fr;
+  }
+
+  .schedulerColumn {
+    position: relative;
+    top: auto;
+  }
+}
+
+.promptKicker {
+  margin: 0 0 0.85rem;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #64748b;
+}
+
 .emptyState {
   padding: 2.5rem 1rem;
   text-align: center;
@@ -589,4 +632,128 @@
     position: relative;
     max-height: 280px;
   }
+}
+
+/* —— Decision assistant (compare candidates + AI explanations) —— */
+.promptWrap {
+  max-width: 42rem;
+  margin: 0 auto;
+  padding: 1.5rem 0.25rem;
+  text-align: center;
+}
+
+.promptLead {
+  margin: 0 0 1.25rem;
+  font-size: 1.05rem;
+  line-height: 1.55;
+  color: #334155;
+}
+
+.compareActions {
+  display: flex;
+  justify-content: center;
+}
+
+.loadingWrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  min-height: 240px;
+  padding: 2rem 1rem;
+}
+
+.loadingWrap .promptKicker {
+  align-self: flex-start;
+  width: 100%;
+  margin-bottom: 0.25rem;
+}
+
+.loadingLabel {
+  margin: 0;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #475569;
+}
+
+.spinner {
+  width: 2.25rem;
+  height: 2.25rem;
+  border: 3px solid rgba(15, 118, 110, 0.2);
+  border-top-color: #0f766e;
+  border-radius: 50%;
+  animation: spinFlow 0.75s linear infinite;
+}
+
+@keyframes spinFlow {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.errorWrap {
+  margin: 1.5rem auto;
+  max-width: 36rem;
+  padding: 1rem 1.15rem;
+  border-radius: 12px;
+  background: rgba(254, 242, 242, 0.9);
+  border: 1px solid rgba(248, 113, 113, 0.35);
+  color: #991b1b;
+  font-size: 0.92rem;
+  text-align: center;
+}
+
+.errorFriendly {
+  margin: 0 0 0.65rem;
+  font-weight: 600;
+}
+
+.errorDetail {
+  margin: 0;
+  font-size: 0.8rem;
+  font-weight: 400;
+  color: #7f1d1d;
+  line-height: 1.45;
+  opacity: 0.92;
+  text-align: left;
+  word-break: break-word;
+}
+
+.resultsHead {
+  margin: 0 0 1.25rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid rgba(15, 23, 42, 0.08);
+}
+
+.resultsKicker {
+  margin: 0 0 0.25rem;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #64748b;
+}
+
+.resultsTitle {
+  margin: 0;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.resultsHint {
+  margin: 0.5rem 0 0;
+  font-size: 0.88rem;
+  color: #64748b;
+  line-height: 1.45;
+}
+
+.cardGridFlow {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 320px), 1fr));
+  gap: 1.25rem;
 }
