@@ -12,25 +12,30 @@ no fair comparison system.
 
 DariLik analyzes tenant profiles and scores them based on financial stability, employment
 status, and compatibility with the listing. Landlords get a ranked shortlist instead of
-a pile of unstructured applications.
+a pile of unstructured applications — powered by Google Generative AI and Claude.
 
 ## My Contribution
 
 I led the backend development end-to-end:
-- Designed and implemented the **tenant scoring algorithm** (Python, SQL) — weighted
-  criteria including income stability, rental history, and profile completeness
-- Built the **REST API layer** that connects the frontend to the scoring engine
-- Handled all **data processing and storage logic** for tenant profiles and listings
-- Integrated the backend with the JavaScript frontend during the final hours of the hackathon
+- Designed and implemented the **tenant scoring algorithm** — weighted criteria including
+  income stability, rental history, and profile completeness
+- Built the **FastAPI REST layer** that connects the frontend to the scoring engine
+  and AI models
+- Integrated **Google Generative AI and the Anthropic (Claude) API** for intelligent
+  tenant evaluation and recommendations
+- Managed **PostgreSQL database** schema, queries, and SQLAlchemy models
+- Handled all data validation using Pydantic and connected the backend to the
+  JavaScript frontend during the final hours of the hackathon
 
 ## Tech Stack
 
-| Layer    | Technology              |
-|----------|-------------------------|
-| Backend  | Python, Flask, SQL      |
-| Frontend | JavaScript, HTML, CSS   |
-| Data     | SQLite / SQL queries    |
-| Other    | REST APIs, Git          |
+| Layer    | Technology                              |
+|----------|-----------------------------------------|
+| Backend  | Python, FastAPI, SQLAlchemy             |
+| AI       | Google Generative AI, Anthropic (Claude)|
+| Database | PostgreSQL                              |
+| Frontend | JavaScript, HTML, CSS                   |
+| Other    | Pydantic, uvicorn, REST APIs, Git       |
 
 ## How to Run
 
@@ -44,7 +49,7 @@ pip install -r requirements.txt
 
 # Run the backend
 cd backend
-python app.py
+uvicorn main:app --reload
 
 # Open the frontend
 cd ../frontend
@@ -53,17 +58,18 @@ open index.html
 
 ## Features
 
-- Tenant scoring system based on multiple weighted criteria
+- AI-powered tenant scoring using Google Generative AI and Claude
 - Profile comparison across multiple applicants
 - Data-driven recommendations for landlords
-- Clean REST API consumed by the frontend
+- Clean REST API built with FastAPI
 
 ## What I'd Improve With More Time
 
-- Replace rule-based scoring with an ML model trained on real rental data
+- Fine-tune the AI prompts with more real rental data from the Moroccan market
 - Add landlord authentication and a proper dashboard
-- Connect to real estate listing platforms via external APIs
+- Deploy the API and connect to real estate listing platforms
 
 ## Team
 
-Built collaboratively at a hackathon. My role: backend, API design, scoring logic.
+Built collaboratively at a 48-hour hackathon. My role: backend, FastAPI, AI integration,
+database design, scoring logic.
